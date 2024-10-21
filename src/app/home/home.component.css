@@ -1,0 +1,184 @@
+/* Container principal */
+.dashboard-container {
+  display: flex;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+}
+
+/* Barra lateral */
+.sidebar {
+  width: 250px;
+  background-color: #fff;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  width: 200px;
+}
+
+.sidebar-menu {
+  flex-grow: 1;
+  margin-top: 21px;
+}
+
+.sidebar-menu ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar-menu ul li {
+  margin: 15px 0;
+}
+
+.sidebar-menu ul li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+
+.logout a {
+  color: red;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* Conteúdo principal */
+.main-content {
+  flex: 1;
+  padding: 20px;
+  background-color: #fff;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #ddd;
+}
+
+.user-info {
+  font-size: 18px;
+}
+
+.user-actions {
+  display: flex;
+  align-items: center;
+}
+
+.user-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-left: 10px;
+}
+
+.schedule {
+  margin-top: 20px;
+}
+
+.schedule h2 {
+  font-size: 24px;
+}
+
+.schedule p {
+  color: #666;
+  margin-bottom: 20px;
+}
+
+/* Box das aulas */
+.class-box {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 15px;
+}
+
+.class-info h3 {
+  font-size: 22px;
+  margin: 0;
+}
+
+.class-info p {
+  font-size: 18px;
+  margin: 5px 0;
+}
+
+.class-info span {
+  color: #666;
+}
+
+.students {
+  display: flex;
+  align-items: center;
+}
+
+.student-icons {
+  display: flex;
+  margin-right: 20px;
+}
+
+.student-icons img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  margin-left: -10px;
+}
+
+button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  background-color: #4caf50;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+/* Seção lateral direita */
+.right-sidebar {
+  width: 250px;
+  background-color: #f0f0f0;
+  padding: 20px;
+}
+
+.next-day {
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.class-box-small {
+  background-color: #d2c4e9;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 5px;
+}
+
+.class-box-small p {
+  font-size: 14px;
+  margin: 5px 0;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+}
+.profile img {
+  margin-right: 10px;
+  border-radius: 50%;
+  width: 30px;
+}
