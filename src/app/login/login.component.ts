@@ -15,4 +15,12 @@ export class LoginComponent {
     this.router.navigate(['/home']);
   }
 
+  redirectToProfessor() {
+    this.router.navigate(['/registers/professor']);
+  }
+
+  redirectToStudent() {
+    this.router.navigate(['/registers/student']);
+  }
+
 }
