@@ -26,7 +26,7 @@ export class LecturesComponent {
 
   private initForm() {
     this.lectureForm = this.fb.group({
-      name: ['', [Validators.required]],
+      lectureName: ['', [Validators.required]],
       owner: ['', [Validators.required]],
       students: ['', [Validators.required]],
     });
@@ -39,14 +39,13 @@ export class LecturesComponent {
 
     const formData = this.lectureForm.value;
 
-    // Convertendo o campo de texto de 'lectures' para um array de strings
     if (formData.students) {
       formData.students = formData.students.split(',').map((students: string) => students.trim());
     }
 
     this.lectureService.postLecture(formData).subscribe({
       next: () => {
-        this.router.navigate([`/lecture`]);
+        this.router.navigate([`/home`]);
       },
       error: (err) => {
         console.error('Erro ao cadastrar matéria', err);

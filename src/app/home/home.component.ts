@@ -66,9 +66,11 @@ export class HomeComponent implements OnInit {
   deleteLecture(id: number){
     this.lectureService.deleteLectureById(id).subscribe((data: any[]) => {
       console.log('Aula deletada');
+      this.getLectures();
     },
     error => {
       console.error('Erro ao deletar a aula:', error);
     })
+    this.getLectures();
   }
 }

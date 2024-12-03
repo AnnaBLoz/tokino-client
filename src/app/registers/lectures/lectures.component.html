@@ -7,14 +7,14 @@
     <form [formGroup]="lectureForm" (ngSubmit)="onSubmit()">
 
       <div class="form-group">
-        <label for="name">Nome</label>
+        <label for="lectureName">Nome</label>
         <input
           type="text"
-          id="name"
-          formControlName="name"
+          id="lectureName"
+          formControlName="lectureName"
           required
         />
-        <div *ngIf="lectureForm.get('name')?.invalid && lectureForm.get('name')?.touched" class="error">
+        <div *ngIf="lectureForm.get('lectureName')?.invalid && lectureForm.get('lectureName')?.touched" class="error">
           Nome é obrigatório.
         </div>
       </div>
