@@ -1,17 +1,21 @@
 <div class="full-screen-container">
   <div class="register-container">
-    <div style="display: flex; justify-content: center;"><img src="assets/logos/logoblack.png" alt="Logo Tokino" style="height: 38px; margin-bottom: 15px;"/></div>
+    <div style="display: flex; justify-content: center;">
+      <img src="assets/logos/logoblack.png" alt="Logo Tokino" style="height: 38px; margin-bottom: 15px;"/>
+    </div>
     <h1>Cadastro</h1>
-    <form (ngSubmit)="onSubmit()" #registerForm="ngForm">
+    <form [formGroup]="studentForm" (ngSubmit)="onSubmit()">
       <div class="form-group">
         <label for="name">Nome</label>
         <input
           type="text"
           id="name"
-          name="name"
-          [(ngModel)]="formData.name"
+          formControlName="name"
           required
         />
+        <div *ngIf="studentForm.get('name')?.invalid && studentForm.get('name')?.touched" class="error">
+          Nome é obrigatório.
+        </div>
       </div>
 
       <div class="form-group">
@@ -19,35 +23,55 @@
         <input
           type="email"
           id="email"
-          name="email"
-          [(ngModel)]="formData.email"
+          formControlName="email"
           required
         />
+        <div *ngIf="studentForm.get('email')?.invalid && studentForm.get('email')?.touched" class="error">
+          E-mail é obrigatório e deve ser válido.
+        </div>
       </div>
 
       <div class="form-group">
-        <label for="matricula">Matrícula</label>
+        <label for="password">Senha</label>
         <input
-          type="text"
-          id="matricula"
-          name="matricula"
-          [(ngModel)]="formData.matricula"
+          type="password"
+          id="password"
+          formControlName="password"
           required
         />
+        <div *ngIf="studentForm.get('password')?.invalid && studentForm.get('password')?.touched" class="error">
+          Senha é obrigatório e deve ser válido.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="slug">Matrícula (Slug)</label>
+        <input
+          type="text"
+          id="slug"
+          formControlName="slug"
+          required
+        />
+        <div *ngIf="studentForm.get('slug')?.invalid && studentForm.get('slug')?.touched" class="error">
+          Matrícula é obrigatória.
+        </div>
       </div>
 
       <div class="form-group">
         <label for="curso">Curso</label>
-        <select id="curso" name="curso" [(ngModel)]="formData.curso" required>
+        <select id="curso" formControlName="course" required>
           <option value="" disabled selected>Selecione um curso</option>
           <option *ngFor="let curso of cursos" [value]="curso">{{ curso }}</option>
         </select>
+        <div *ngIf="studentForm.get('course')?.invalid && studentForm.get('course')?.touched" class="error">
+          Curso é obrigatório.
+        </div>
       </div>
 
       <button
         type="submit"
         class="primary-button"
-        [disabled]="!registerForm.valid"
+        [disabled]="studentForm.invalid"
       >
         Cadastrar
       </button>

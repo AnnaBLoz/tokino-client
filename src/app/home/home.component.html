@@ -1,13 +1,10 @@
-
 <div class="dashboard-container">
   <app-sidebar></app-sidebar>
 
-  <!-- Conteúdo principal -->
   <main class="main-content">
-    <!-- Cabeçalho -->
     <header class="header">
       <div class="user-info">
-        <span>Olá, Matheus Lofy</span>
+        <span>Olá, {{ userName }}</span>
       </div>
       <div class="user-actions">
         <span>+</span>
@@ -15,67 +12,23 @@
       </div>
     </header>
 
-    <!-- Seção de horários -->
-    <section class="schedule">
-      <h2>Quinta-feira, 3 de outubro de 2024</h2>
-      <p>5 aulas • 300 alunos • 12 horas restantes • 53% concluídos</p>
+    <section class="schedule" *ngIf="lectures.length > 0; else noLectures">
+      <h2>Agenda de Hoje</h2>
+      <p>{{ lectures.length }} aulas programadas</p>
 
-      <!-- Aula atual -->
-      <div class="class-box current-class" style="background-color: #c2d6a8;">
+      <div class="class-box current-class" style="background-color: #c2d6a8;" *ngFor="let lecture of lectures">
         <div class="class-info">
-          <h3>09:00</h3>
-          <p>Inteligência artificial</p>
-          <span>Claudinei (Ney) • Sala E11</span>
+          <p>{{ lecture.lectureName }}</p>
+          <span>{{ lecture.owner }}</span>
         </div>
-        <div class="students">
-          <!-- Ícones de alunos -->
-          <div class="student-icons">
-            <!-- Ícones de alunos aqui -->
-          </div>
-          <button>Marcar presença</button>
-        </div>
-      </div>
-
-      <!-- Próximas aulas -->
-      <h3 style="margin-top: 15px;">Próximas aulas</h3>
-      <div class="class-box" style="background-color: #d2c4e9;">
-        <div class="class-info">
-          <h3>10:30</h3>
-          <p>Internet das coisas</p>
-          <span>Paulo Manseira • Sala E11</span>
-        </div>
-        <div class="students">
-          <!-- Ícones de alunos -->
-        </div>
-      </div>
-
-      <div class="class-box" style="background-color: #d4b59f;">
-        <div class="class-info">
-          <h3>11:00</h3>
-          <p>PAC - 6a fase</p>
-          <span>Paulo Manseira • Sala E11</span>
-        </div>
-        <div class="students">
-          <!-- Ícones de alunos -->
-        </div>
+       <!-- <div class="students">
+          <button (click)="deleteLecture(lecture.id)">Deletar</button>
+        </div> -->
       </div>
     </section>
-  </main>
 
-  <!-- Seção lateral direita -->
-  <aside class="right-sidebar">
-    <div class="next-day">
-      <h3>Amanhã</h3>
-      <div class="class-box-small">
-        <span style="font-weight: bold;">10:30</span>
-        <div class="profile">
-          <img src="assets/png/professor-avatar.png" alt="Professor Avatar" width="50" height="50">
-          <p>Paulo Manseira</p>
-        </div>
-        <p>Internet das coisas</p>
-        <span>Sala E11</span>
-      </div>
-      <!-- Outras aulas... -->
-    </div>
-  </aside>
+    <ng-template #noLectures>
+      <p>Nenhuma aula programada para hoje.</p>
+    </ng-template>
+  </main>
 </div>

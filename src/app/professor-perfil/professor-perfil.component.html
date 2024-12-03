@@ -1,0 +1,52 @@
+<div class="full-screen-container">
+  <div class="register-container">
+    <div style="display: flex; justify-content: center;"><img src="assets/logos/logoblack.png" alt="Logo Tokino" style="height: 38px; margin-bottom: 15px;"/></div>
+    <form #registerForm="ngForm">
+      <h1>Visualização de Professor</h1>
+
+      <div class="form-group">
+        <label for="name">Nome</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          [(ngModel)]="formData.name"
+          readonly
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="email">E-mail</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          [(ngModel)]="formData.email"
+          readonly
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="matricula">Matéria(s)</label>
+        <input
+          type="text"
+          id="lectures"
+          name="lectures"
+          [(ngModel)]="formData.lectures"
+          readonly
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="matricula">Slug</label>
+        <input
+          type="text"
+          id="matricula"
+          name="matricula"
+          [(ngModel)]="formData.slug"
+          readonly
+        />
+      </div>
+    </form>
+  </div>
+</div>

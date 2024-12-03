@@ -139,7 +139,7 @@ button {
   padding: 10px 15px;
   border: none;
   border-radius: 5px;
-  background-color: #4caf50;
+  background-color: red;
   color: white;
   cursor: pointer;
 }
@@ -181,4 +181,16 @@ button:hover {
   margin-right: 10px;
   border-radius: 50%;
   width: 30px;
+}
+
+.dashboard-container {
+  display: flex;
+  height: 100vh; /* Garante que o contêiner tenha altura completa da tela */
+  overflow: hidden; /* Impede que o conteúdo saia da tela */
+}
+
+.main-content {
+  overflow-y: auto; /* Permite rolagem vertical quando necessário */
+  flex-grow: 1; /* Garante que o conteúdo principal ocupe o espaço restante */
+  padding: 20px;
 }

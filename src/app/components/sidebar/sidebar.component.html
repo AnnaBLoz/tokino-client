@@ -5,14 +5,21 @@
     </div>
     <nav class="sidebar-menu">
       <ul>
-        <li><a href="#">Turmas</a></li>
-        <li><a href="#">Buscar</a></li>
-        <li><a href="#">Relatórios</a></li>
-        <li><a href="#">Configurações</a></li>
+        <li><a (click)="openModal()">Buscar Professor</a></li>
+        <li><a href="http://localhost:4200/registers/lecture">Criar Aula</a></li>
       </ul>
     </nav>
     <div class="logout">
       <a (click)="onSubmit()">Sair</a>
     </div>
   </aside>
+</div>
+
+<div *ngIf="isModalOpen" class="modal-overlay">
+  <div class="modal-content">
+    <h2>Digite o Slug do Professor</h2>
+    <input type="text" [(ngModel)]="slug" placeholder="Slug do Professor" />
+    <button (click)="redirectToProfessor()">Buscar</button>
+    <button (click)="closeModal()">Cancelar</button>
+  </div>
 </div>

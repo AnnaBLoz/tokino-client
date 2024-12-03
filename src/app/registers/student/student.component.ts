@@ -1,26 +1,55 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { StudentService } from '../../services/student.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-student',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './student.component.html',
-  styleUrl: './student.component.css'
+  styleUrls: ['./student.component.css']
 })
 export class StudentComponent {
-  formData = {
-    name: '',
-    email: '',
-    matricula: '',
-    curso: ''
-  };
+  studentForm!: FormGroup;
 
-  cursos = ['Engenharia', 'Medicina', 'Direito', 'Arquitetura'];
+  cursos = ['Engenharia de Software', 'Medicina', 'Direito', 'Arquitetura'];
+
+  constructor(
+    private studentService: StudentService,
+    private fb: FormBuilder,
+    private router: Router
+  ) {}
+
+  ngOnInit() {
+    this.initForm();
+  }
+
+  private initForm() {
+    this.studentForm = this.fb.group({
+      name: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
+      slug: ['', [Validators.required]], // Substituindo matrícula por slug
+      password: ['', [Validators.required]],
+      course: ['', [Validators.required]], // Campo obrigatório para o curso
+    });
+  }
 
   onSubmit() {
-    console.log('Formulário enviado:', this.formData);
-    alert('Cadastro realizado com sucesso!');
+    if (this.studentForm.invalid) {
+      return;
+    }
+
+    const formData = this.studentForm.value;
+
+    this.studentService.postStudent(formData).subscribe({
+      next: () => {
+        this.router.navigate(['/login']);
+      },
+      error: (err) => {
+        console.error('Erro ao cadastrar o aluno', err);
+      }
+    });
   }
 }

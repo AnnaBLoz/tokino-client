@@ -1,0 +1,57 @@
+<div class="full-screen-container">
+  <div class="register-container">
+    <div style="display: flex; justify-content: center;">
+      <img src="assets/logos/logoblack.png" alt="Logo Tokino" style="height: 38px; margin-bottom: 15px"/>
+    </div>
+    <h1>Cadastro</h1>
+    <form [formGroup]="lectureForm" (ngSubmit)="onSubmit()">
+
+      <div class="form-group">
+        <label for="name">Nome</label>
+        <input
+          type="text"
+          id="name"
+          formControlName="name"
+          required
+        />
+        <div *ngIf="lectureForm.get('name')?.invalid && lectureForm.get('name')?.touched" class="error">
+          Nome é obrigatório.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="owner">Professor</label>
+        <input
+          type="text"
+          id="owner"
+          formControlName="owner"
+          required
+        />
+        <div *ngIf="lectureForm.get('owner')?.invalid && lectureForm.get('owner')?.touched" class="error">
+          Professor é obrigatório e deve ser válido.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="lectures">Alunos</label>
+        <input
+          type="text"
+          id="students"
+          formControlName="students"
+          required
+        />
+        <div *ngIf="lectureForm.get('students')?.invalid && lectureForm.get('students')?.touched" class="error">
+          Estudantes é obrigatório.
+        </div>
+      </div>
+
+      <button
+        type="submit"
+        class="primary-button"
+        [disabled]="lectureForm.invalid"
+      >
+        Cadastrar
+      </button>
+    </form>
+  </div>
+</div>
